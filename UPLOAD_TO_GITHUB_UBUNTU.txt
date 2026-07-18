@@ -1,0 +1,23 @@
+Загрузка SpecialVegas v19 через Ubuntu
+
+Архив должен лежать в папке «Загрузки» под именем specialvegas-v19.zip.
+
+cd "$HOME/Загрузки" && \
+gh auth status >/dev/null 2>&1 || gh auth login --web --git-protocol https
+
+rm -rf "$HOME/specialvegas-v19" && \
+git clone "https://github.com/Krutoykrout/specialvegas3.git" "$HOME/specialvegas-v19" && \
+cd "$HOME/specialvegas-v19" && \
+find . -mindepth 1 -maxdepth 1 ! -name ".git" -exec rm -rf {} + && \
+unzip -o "$HOME/Загрузки/specialvegas-v19.zip" -d . && \
+test -f index.html || { echo "ОШИБКА: index.html не найден в корне архива"; exit 1; } && \
+git config user.name "Krutoykrout" && \
+git config user.email "297090570+Krutoykrout@users.noreply.github.com" && \
+git add -A && \
+git commit -m "SpecialVegas v19" && \
+git push origin main
+
+GitHub Pages:
+https://krutoykrout.github.io/specialvegas3/
+
+Файл CNAME в этой версии отсутствует, поэтому GitHub Pages не должен перенаправлять на пользовательский домен.

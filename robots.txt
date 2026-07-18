@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://vegas-ransom.ru/sitemap.xml
